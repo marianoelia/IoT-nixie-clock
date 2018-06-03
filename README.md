@@ -1,10 +1,10 @@
-# Nixie Clock
+# Nixie Clock Project
 _____
 
 ![NixieClock](https://i.imgur.com/uSDMjrFl.jpg)
 
-Introduction
-This is 
+## Introduction
+This is repo for my nixie clock build.
 
 
 License
