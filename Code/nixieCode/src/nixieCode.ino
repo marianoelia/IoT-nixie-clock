@@ -1,8 +1,8 @@
 /*
- * Project nixieCode
+ * Project Particle Photon Nixie Clock
  * Description:
  * Author:
- * Date:
+ * Date: July 20 2017
  */
 
 
@@ -114,9 +114,6 @@
    //  oldTime = getTime();
  }
 
- //startEffect("1");
- //showdigits(9012, 8);
- //testDigits();
  } ////////////// End of void loop()
 
 
@@ -307,10 +304,14 @@
 
  void getLEDSettings(){
      EEPROM.get(blueLEDAddress, ledOnOff);
-     if (ledOnOff == 1)
+     if (ledOnOff == 1) {
      digitalWrite(blueLEDPin, HIGH);
-     else
+     digitalWrite(decimalPin, HIGH);
+   }
+     else {
      digitalWrite(blueLEDPin, LOW);
+     digitalWrite(decimalPin ,LOW);
+ }
  }
 
  void getDSTSettings(){
