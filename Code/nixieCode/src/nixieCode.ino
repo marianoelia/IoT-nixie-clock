@@ -8,7 +8,7 @@
 
 #include <Adafruit_DHT.h>
 
-#define DHTPIN A0
+#define DHTPIN 7
 #define DHTTYPE DHT11
 
 int temperature, humidity;
@@ -27,18 +27,15 @@ DHT dht(DHTPIN, DHTTYPE);
  int digit3 = 3;
  int digit4 = 2;
  int colonPin = 6;
- int DHTPin = 7;
  int blueLEDPin = 1;
- int dateInterval; // = 30; // interval which date is shown
 
  int zone;
  int ledOnOff;
- int zeroOrNot = 1;
  long previousMillis = 0;
 
  int count = 0;
  int oldTime;
- int segmentPins[4]={
+ const int segmentPins[4]={
      A1, A3, A2, A0
  };
 
@@ -70,7 +67,7 @@ DHT dht(DHTPIN, DHTTYPE);
  pinMode(A3, OUTPUT);
 
  pinMode(blueLEDPin, OUTPUT); //Pin to turn blue leds on/off
- pinMode(DHTPin, INPUT); //Pin input from DHT11
+ pinMode(DHTPIN, INPUT); //Pin input from DHT11
 
  pinMode(digit1, OUTPUT);
  pinMode(digit2, OUTPUT);
@@ -231,7 +228,8 @@ DHT dht(DHTPIN, DHTTYPE);
     int ones = ((fullTime%1000)%100)%10;
     int tens = ((fullTime%1000)%100)/10;
     int hundreds = fullTime%1000/100;
-     showdigits(0000,1500);
+     showdigits(0000,1000);
+
      for (int i = 0; i<4; i++){
          if (i ==0){
      for (int j = 0; j<9; j++){
@@ -277,17 +275,20 @@ DHT dht(DHTPIN, DHTTYPE);
          showdigits(final, 30);
      }
      }
-  showdigits(fullTime, 4000);
+
   }
+    showdigits(fullTime, 4000);
    return 1;
  }
 
  int readTemperature(String command){
 temperature = dht.getTempCelcius();
+delay(10);
 return temperature;
  }
 
  int readHumidity(String command){
 humidity = dht.getHumidity();
+delay(10);
 return humidity;
  }
