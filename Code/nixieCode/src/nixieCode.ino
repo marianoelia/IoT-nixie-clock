@@ -184,16 +184,16 @@ DHT dht(DHTPIN, DHTTYPE);
      digitalWrite(blueLEDPin, ledOnOff);
      digitalWrite(colonPin, HIGH); //neon bulb
      EEPROM.put(lastLEDSetting, ledOnOff);
-     return 5;
+     return 1;
      }
      else {
          ledOnOff = 0;
      digitalWrite(blueLEDPin, ledOnOff);
      digitalWrite(colonPin, LOW); //neon bulb
      EEPROM.put(lastLEDSetting, ledOnOff);
-     return 5;
+     return 1;
      }
-     return 2;
+     return 0;
  }
 
  void getLEDSettings(){
@@ -281,7 +281,7 @@ DHT dht(DHTPIN, DHTTYPE);
    return 1;
  }
 
- int readTemperature(String command){
+int readTemperature(String command){
 temperature = dht.getTempCelcius();
 delay(10);
 return temperature;
